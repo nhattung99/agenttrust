@@ -1,0 +1,252 @@
+{
+  "ctor": {
+    "params": [],
+    "kwparams": {}
+  },
+  "methods": {
+    "accept_result": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "any",
+      "payable": false
+    },
+    "accept_task": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "any",
+      "payable": false
+    },
+    "adjudicate_dispute": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "any",
+      "payable": false
+    },
+    "create_task": {
+      "params": [
+        [
+          "title",
+          "string"
+        ],
+        [
+          "description",
+          "string"
+        ],
+        [
+          "agent_id",
+          "string"
+        ],
+        [
+          "criteria",
+          [
+            {
+              "$rep": "string"
+            }
+          ]
+        ],
+        [
+          "evidence_type",
+          "string"
+        ],
+        [
+          "submission_deadline",
+          "int"
+        ],
+        [
+          "review_deadline",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "string",
+      "payable": false
+    },
+    "get_agent": {
+      "params": [
+        [
+          "agent_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "get_agent_reputation": {
+      "params": [
+        [
+          "agent_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "get_counts": {
+      "params": [],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "get_task": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "get_verdict": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "list_agents": {
+      "params": [
+        [
+          "offset",
+          "int"
+        ],
+        [
+          "limit",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "list_tasks": {
+      "params": [
+        [
+          "offset",
+          "int"
+        ],
+        [
+          "limit",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "open_dispute": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ],
+        [
+          "reason",
+          "string"
+        ],
+        [
+          "contested",
+          [
+            {
+              "$rep": "int"
+            }
+          ]
+        ],
+        [
+          "evidence",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "any",
+      "payable": false
+    },
+    "register_agent": {
+      "params": [
+        [
+          "name",
+          "string"
+        ],
+        [
+          "description",
+          "string"
+        ],
+        [
+          "category",
+          "string"
+        ],
+        [
+          "website",
+          "string"
+        ],
+        [
+          "github",
+          "string"
+        ],
+        [
+          "avatar",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "string",
+      "payable": false
+    },
+    "submit_result": {
+      "params": [
+        [
+          "task_id",
+          "string"
+        ],
+        [
+          "summary",
+          "string"
+        ],
+        [
+          "evidence",
+          "string"
+        ],
+        [
+          "deliverable",
+          "string"
+        ],
+        [
+          "explanation",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "any",
+      "payable": false
+    }
+  }
+}

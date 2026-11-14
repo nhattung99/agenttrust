@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-14T17:00:02.392Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "expectsPending": false,
+  "scope": "HTTP rendering with the configured address; not a signing or adjudication test",
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/agents",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/agents/register",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/agents/1",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/tasks",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/tasks/new",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/tasks/1",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/dashboard",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    },
+    {
+      "route": "/how-it-works",
+      "status": 200,
+      "hasBrand": true,
+      "hasPendingNotice": false
+    }
+  ]
+}

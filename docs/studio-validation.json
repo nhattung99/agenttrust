@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-11-13T17:19:15.755Z",
+  "chain": "studionet",
+  "chainId": 61999,
+  "sdk": "genlayer-js@1.1.8",
+  "sourceSha256": "a49de5bd6f7dd22d4bb8cd2e01b9ea18b836cd8ee6629f35908bf2b5b932d991",
+  "kind": "Read-only schema extraction, not deployment or execution validation"
+}

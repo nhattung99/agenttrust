@@ -1,0 +1,28 @@
+name: Validate AgentTrust
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_GENLAYER_NETWORK: studionet
+      NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS: "0x2cDb3653Efc05a3F3825673e9C7827B446936BD5"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - run: npm run test:contract
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build

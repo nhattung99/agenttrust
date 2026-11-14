@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+__pycache__/
+.venv/
+coverage/
+research/
+test-results/
+.vercel/
+*.log
+release-artifacts/
+next-env.d.ts

@@ -1,0 +1,8 @@
+{
+  "source": "https://raw.githubusercontent.com/psf/requests/3c7baaa05ab4aa49cc819ce3a819d260de19c157/LICENSE",
+  "checkedAt": "2026-11-13T17:12:35.898Z",
+  "httpStatus": 200,
+  "bytes": 10142,
+  "declaredLicense": "Apache License, Version 2.0",
+  "scope": "Host HTTP reachability only; not proof of GenVM web-runtime reachability or a verdict."
+}

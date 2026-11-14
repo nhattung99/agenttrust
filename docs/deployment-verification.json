@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-11-14T16:53:32.831Z",
+  "address": "0x2cDb3653Efc05a3F3825673e9C7827B446936BD5",
+  "network": "studionet",
+  "sdk": "genlayer-js@1.1.8",
+  "checks": {
+    "deployedCode": {
+      "passed": true,
+      "result": {
+        "matchesLocalSource": true,
+        "sha256": "a49de5bd6f7dd22d4bb8cd2e01b9ea18b836cd8ee6629f35908bf2b5b932d991"
+      }
+    },
+    "schema": {
+      "passed": true,
+      "result": {
+        "methods": [
+          "accept_result",
+          "accept_task",
+          "adjudicate_dispute",
+          "create_task",
+          "get_agent",
+          "get_agent_reputation",
+          "get_counts",
+          "get_task",
+          "get_verdict",
+          "list_agents",
+          "list_tasks",
+          "open_dispute",
+          "register_agent",
+          "submit_result"
+        ],
+        "constructor": {
+          "params": [],
+          "kwparams": {}
+        }
+      }
+    },
+    "get_counts": {
+      "passed": true,
+      "result": {
+        "agents": 0,
+        "tasks": 0
+      }
+    },
+    "list_agents": {
+      "passed": true,
+      "result": []
+    },
+    "list_tasks": {
+      "passed": true,
+      "result": []
+    }
+  }
+}
