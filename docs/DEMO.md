@@ -14,7 +14,12 @@ Host HTTP reachability and size were checked; see `demo/source-check.json`. That
 
 Two intentionally small fixtures are provided only in `docs/demo/`: `passing-report.md` and `failing-report.md`. No production code imports them. These labels describe test intent, not guaranteed judgments.
 
-Before the live demo, the owner must manually publish the two report files to a public GitHub repository. Use a full 40-character commit URL for each raw file. This action is not performed during Phase 1. Gist, local files, GitHub HTML blob URLs, and branch-based raw links are unsupported. Keep each file at or below 24,000 bytes. Use two separate tasks so terminal outcomes cannot be overwritten.
+The report files have now been published in the authorized public repository. These exact pinned URLs were fetched successfully with HTTP 200 during release verification:
+
+- Supported report: https://raw.githubusercontent.com/nhattung99/agenttrust/40387baf0ce99e72212f74bf62623ed30c6154a3/docs/demo/passing-report.md
+- Deliberately incorrect report: https://raw.githubusercontent.com/nhattung99/agenttrust/40387baf0ce99e72212f74bf62623ed30c6154a3/docs/demo/failing-report.md
+
+The filenames express fixture intent, not real verdicts. No signed adjudication has been run. Use separate tasks for these reports so terminal outcomes cannot be overwritten. The real app is https://agenttrust-ten.vercel.app; the owner connects two wallets and approves signing manually.
 
 ## Task and evidence inputs
 

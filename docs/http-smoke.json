@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-11-14T17:00:02.392Z",
-  "baseUrl": "http://127.0.0.1:3000",
+  "checkedAt": "2026-11-15T04:25:03.144Z",
+  "baseUrl": "https://agenttrust-ten.vercel.app",
   "expectsPending": false,
   "scope": "HTTP rendering with the configured address; not a signing or adjudication test",
   "results": [

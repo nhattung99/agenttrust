@@ -10,11 +10,17 @@ An operator registers an agent profile. A client assigns a task with immutable c
 
 ## Current status
 
-The owner deployed the contract on stable **studionet** at **`0x2cDb3653Efc05a3F3825673e9C7827B446936BD5`**. Read-only verification confirms that the deployed source matches `contracts/agent_trust.py`, all 14 method signatures match, and finalized counts/list reads work. The deployment initially contains zero agents and zero tasks. See [deployment-verification.json](docs/deployment-verification.json).
+**Live application:** https://agenttrust-ten.vercel.app
 
-`.env.local` and `.env.production.local` are configured locally with that public address and remain ignored by Git. The empty public repository is https://github.com/nhattung99/agenttrust. The personal-team Vercel project `agenttrust` has matching environment values and build settings. Source push and production deployment are awaiting approval. Real wallet-signed writes, AI adjudication, verdict persistence, and reputation updates have **not** yet been exercised on this deployment. Local tests do not substitute for that workflow. See [the release report](docs/RELEASE_REPORT.md).
+**Public source:** https://github.com/nhattung99/agenttrust
 
-The app uses real SDK reads and writes and never seeds production records. Without a configured address it still disables writes and displays Contract deployment pending.
+The owner deployed the contract on stable **studionet** at **`0x2cDb3653Efc05a3F3825673e9C7827B446936BD5`**. Read-only verification confirms that deployed source and all 14 methods match the local implementation. Finalized counts/list reads work; the deployment was empty at verification. See [deployment-verification.json](docs/deployment-verification.json).
+
+The app is published to the authorized personal-team Vercel project. Its production build succeeded, all nine required public routes returned HTTP 200, and the served JavaScript contains the actual contract address. [GitHub Actions](https://github.com/nhattung99/agenttrust/actions/runs/43676485404) passed tests, TypeScript, lint, and build for the runtime release. Configuration files containing local values remain ignored by Git.
+
+**Still unverified:** real wallet-signed registration-through-adjudication, actual AI consensus/verdicts, reputation updates, and interactive live-browser behavior. Chrome automation permission was unavailable during release verification. Public HTTP checks are not a signed end-to-end demo. See [the release report](docs/RELEASE_REPORT.md).
+
+The app never seeds production records. Without a configured address it safely disables writes and displays Contract deployment pending.
 
 ## Why GenLayer
 
@@ -85,7 +91,7 @@ The executed check report and limits are in [TESTING.md](docs/TESTING.md). Publi
 
 ## Manual deployment and handoff
 
-Deploy **[contracts/agent_trust.py](contracts/agent_trust.py)** in stable [GenLayer Studio](https://studio.genlayer.com/). The constructor takes **no arguments**. Follow [DEPLOYMENT.md](docs/DEPLOYMENT.md) for the exact procedure and two-wallet test sequence. The deployed address is verified. Publication and real wallet-signed demo transactions remain deferred until owner approval. Retain deployment and subsequent transaction hashes for traceability.
+Deploy **[contracts/agent_trust.py](contracts/agent_trust.py)** in stable [GenLayer Studio](https://studio.genlayer.com/). The constructor takes **no arguments**. Follow [DEPLOYMENT.md](docs/DEPLOYMENT.md) for the exact procedure and two-wallet test sequence. The source and app are published. Real wallet-signed demo transactions await the owner's two public wallet addresses and manual signing. Retain deployment and subsequent transaction hashes for traceability.
 
 ## Reputation and limitations
 

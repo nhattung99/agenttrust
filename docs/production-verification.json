@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-11-15T04:25:45.728Z",
+  "baseUrl": "https://agenttrust-ten.vercel.app",
+  "address": "0x2cDb3653Efc05a3F3825673e9C7827B446936BD5",
+  "scope": "Public HTTP and served bundle configuration only; not browser execution or signed transaction verification",
+  "bundleContainsRealAddress": true,
+  "scripts": [
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/4bd1b696-cd566323a07c169f.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/794-17fb72b146c67208.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/main-app-fb3cfab22ad52df7.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/d0325c53-a0bed4265050b58d.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/422-3910aa35554892ad.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/626-c1e077f3889ac3b0.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/141-c446affef4e6f422.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/307-d006fd682ff381d2.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/app/layout-9ebe1775059d4ad8.js",
+      "status": 200,
+      "containsContractAddress": true
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/app/error-4b12fbb373467e76.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/app/not-found-c2ba66feebfa7631.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/109-4c9ea2c0b7a8cc49.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/app/page-b753f719d1086d9d.js",
+      "status": 200,
+      "containsContractAddress": true
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "status": 200,
+      "containsContractAddress": false
+    },
+    {
+      "url": "https://agenttrust-ten.vercel.app/_next/static/chunks/webpack-64c29f67e646823f.js",
+      "status": 200,
+      "containsContractAddress": false
+    }
+  ],
+  "fixtures": [
+    {
+      "url": "https://raw.githubusercontent.com/nhattung99/agenttrust/40387baf0ce99e72212f74bf62623ed30c6154a3/docs/demo/passing-report.md",
+      "status": 200,
+      "bytes": 1081
+    },
+    {
+      "url": "https://raw.githubusercontent.com/nhattung99/agenttrust/40387baf0ce99e72212f74bf62623ed30c6154a3/docs/demo/failing-report.md",
+      "status": 200,
+      "bytes": 643
+    }
+  ]
+}

@@ -2,14 +2,14 @@
 
 **Tagline:** Trust the outcome, not just the agent.
 
-**Stage:** Deployed on stable Studionet. The deployed source and 14 public-method signatures match the local implementation, and finalized reads succeed. The deployment is empty: zero agents and zero tasks at verification. Wallet-signed end-to-end adjudication and publication remain pending approval.
+**Stage:** Deployed on stable Studionet. The deployed source and 14 public-method signatures match the local implementation, and finalized reads succeed. The deployment is empty: zero agents and zero tasks at verification. The public source and Vercel app are published. Wallet-signed end-to-end adjudication remains unverified.
 
 | Submission artifact            | Actual status                                                                    |
 | ------------------------------ | -------------------------------------------------------------------------------- |
 | Project title                  | AgentTrust - AI Agent Reputation & Dispute Court                                 |
 | Studionet address              | `0x2cDb3653Efc05a3F3825673e9C7827B446936BD5`                                     |
-| GitHub URL                     | https://github.com/nhattung99/agenttrust (created; source push pending approval) |
-| Live Vercel URL                | Vercel project agenttrust prepared; deployment pending approval; no live URL yet |
+| GitHub URL                     | https://github.com/nhattung99/agenttrust |
+| Live Vercel URL                | https://agenttrust-ten.vercel.app |
 | Deployed source / interface    | Verified against the supplied address with official SDK                          |
 | End-to-end verdict transaction | Not run; awaiting operator/client wallets and signing approval                   |
 | Evidence                       | `deployment-verification.json`, `RELEASE_REPORT.md`, `TESTING.md`                |
@@ -40,7 +40,7 @@ MetaMask and the official GenLayer SDK/Snap provide signing. Stable Studionet se
 
 `DEMO.md` specifies a real Requests repository license source pinned to commit `3c7baaa05ab4aa49cc819ce3a819d260de19c157`, measurable documentation criteria, and supported/incorrect report fixtures. The owner manually publishes the report files, deploys the contract, and performs the two-wallet workflow. Neither fixture's label forces its verdict. An inaccessible-source scenario checks INCONCLUSIVE without mistaking transaction failure for judgment.
 
-Before portal submission, attach the actual contract address, deployment transaction, at least one completed adjudication transaction with Studio logs and actual validator evidence, reputation readback, repository URL, and deployed UI URL. The address and deployed source/interface are verified; the remaining live-demo and publication artifacts are pending approval.
+Before portal submission, attach the actual contract address, deployment transaction, at least one completed adjudication transaction with Studio logs and actual validator evidence, reputation readback, repository URL, and deployed UI URL. The source, app URL, address, and deployed interface are verified. The real signed demo transaction, validator evidence, and reputation readback remain pending. The runtime-release CI passed: https://github.com/nhattung99/agenttrust/actions/runs/43676485404.
 
 ## Limitations and roadmap
 

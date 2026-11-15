@@ -1,25 +1,22 @@
-# Submission readiness audit — 15 November 2026
+# Submission readiness - updated after production release
 
-**Decision: not ready to submit as a completed, publicly reproducible MVP under the project's own acceptance criteria.** Implementation and local checks are in place, but publication and a real signed adjudication demo are missing. This assessment does not claim to verify separate Builder Portal eligibility rules.
+**Publication is complete. A fully verified real-adjudication submission still needs the two-wallet live demo.** This assessment follows the project's own acceptance criteria, not independently verified Builder Portal eligibility rules.
 
-## Freshly verified
+## Complete
 
-- GitHub API: `https://github.com/nhattung99/agenttrust` exists and is public, but `isEmpty` is true; no default branch content is published.
-- Vercel CLI: no deployments exist for the prepared `agenttrust` project.
-- Official GenLayer JS SDK: deployed contract `0x2cDb3653Efc05a3F3825673e9C7827B446936BD5` exists on stable studionet. Source and all 14 public method signatures match the local implementation.
-- Finalized contract state: zero agents, zero tasks; both list methods return empty arrays. No real verdict or reputation update can therefore be demonstrated yet.
-- Local Python harness: 29 tests passed. These use a test-only SDK/web/model shim, not actual consensus.
-- Frontend/unit/mocked SDK and wallet tests: 29 tests passed.
-- TypeScript and ESLint passed on this rerun.
-- Production build passed with the actual contract address; all nine required routes were generated.
-- Release artifact/secret-pattern heuristic passed for the 72 indexed files. This is not a complete security audit.
+- Source: https://github.com/nhattung99/agenttrust
+- Live app: https://agenttrust-ten.vercel.app
+- Vercel production deployment is READY. Public HTTP checks passed on all nine required routes.
+- GitHub Actions passed tests, TypeScript, lint, and build for the runtime release: https://github.com/nhattung99/agenttrust/actions/runs/43676485404
+- Studionet contract `0x2cDb3653Efc05a3F3825673e9C7827B446936BD5` exists; source and all 14 methods match. Finalized reads work.
+- Public pinned demo reports are available; URLs and walkthrough are in `DEMO.md`.
+- Builder materials include actual source/app URLs and distinguish mock-based tests from real consensus.
 
-## Submission blockers
+## Remaining
 
-1. Push the reviewed local source to the authorized public GitHub repository, after owner approval. Confirm remote CI results.
-2. Deploy the prepared app to the authorized personal-team Vercel project, after owner approval. Record and test the actual live URL.
-3. Use two owner-controlled wallets to perform registration, task creation, acceptance, submission, dispute, and genuine GenLayer adjudication with public evidence. The owner manually approves signing.
-4. Record actual transaction hashes, finalized execution success, the structured verdict, and the reputation update. Reload the deployed app and verify the same on-chain state.
-5. Update `BUILDER_SUBMISSION.md` with the published source, actual live URL, genuine demo transactions, and observed results. Do not describe mock tests as live consensus.
+1. Owner connects two wallets and approves the real workflow through GenLayer adjudication.
+2. Retain actual transaction hashes, finalized verdict, validator evidence, and reputation readback. Refresh to verify persistence.
+3. Test interactive behavior and mobile layout on the live Vercel domain. Chrome automation was not permitted during release; HTTP checks are not a replacement.
+4. Update Builder materials with observed demo outcomes. Do not claim simulated or unexecuted verdicts.
 
-No GitHub push, Vercel deployment, contract deployment, or write transaction was performed during this readiness audit. The standing approval requirement remains in effect.
+Source push and Vercel deployment were authorized and completed. The contract was not redeployed, and no write transaction was sent. See `RELEASE_REPORT.md` for evidence and limits.
