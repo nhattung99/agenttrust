@@ -3,16 +3,14 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { Address } from "viem";
-import {
-  network,
-  walletClient,
-  type WalletProvider,
-} from "@/lib/genlayer/client";
+import { type WalletProvider } from "@/lib/genlayer/client";
+import { connectWallet, walletErrorMessage } from "@/lib/genlayer/wallet";
 
 declare global {
   interface Window {
@@ -49,8 +47,9 @@ export function Providers({ children }: { children: ReactNode }) {
   const [connecting, setConnecting] = useState(false);
   const [error, setError] = useState<string>();
   const [provider, setProvider] = useState<WalletProvider>();
+  const connectingRef = useRef(false);
   useEffect(() => {
-    const p = window.ethereum;
+    const p = provider;
     if (!p) return;
     const accounts = (...args: unknown[]) => {
       const list = args[0];
@@ -71,37 +70,37 @@ export function Providers({ children }: { children: ReactNode }) {
       p.removeListener?.("accountsChanged", accounts);
       p.removeListener?.("chainChanged", chain);
     };
-  }, [queryClient]);
+  }, [queryClient, provider]);
   async function connect() {
+    if (connectingRef.current) return;
+    connectingRef.current = true;
     setError(undefined);
     setConnecting(true);
     try {
       const p = window.ethereum;
       if (!p)
         throw new Error(
-          "Install an EIP-1193 MetaMask wallet with GenLayer Snap support to connect.",
+          "Install an EIP-1193 wallet such as MetaMask in Chrome, unlock it, and reload this page.",
         );
-      const result: unknown = await p.request({
-        method: "eth_requestAccounts",
-      });
-      if (!Array.isArray(result) || typeof result[0] !== "string")
-        throw new Error("No wallet account was selected.");
-      const account = result[0] as Address;
-      await walletClient(account, p).connect("studionet");
-      const id: unknown = await p.request({ method: "eth_chainId" });
-      setChainId(Number(id));
-      if (Number(id) !== network.id)
-        throw new Error(`Switch to ${network.name} in your wallet.`);
+      const result = await connectWallet(p);
+      setChainId(result.chainId);
       setProvider(p);
-      setAddress(account);
+      setAddress(result.address);
+      queryClient.clear();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Wallet connection failed");
+      setAddress(undefined);
+      setProvider(undefined);
+      setChainId(undefined);
+      setError(walletErrorMessage(e));
     } finally {
+      connectingRef.current = false;
       setConnecting(false);
     }
   }
   function disconnect() {
     setAddress(undefined);
+    setProvider(undefined);
+    setChainId(undefined);
     setError(undefined);
     queryClient.clear();
   }

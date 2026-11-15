@@ -9,6 +9,7 @@ import {
   type TransactionHash,
 } from "genlayer-js/types";
 import { isAddress, type Address } from "viem";
+import { ensureStudionet } from "./wallet";
 
 export const network = studionet;
 const configuredAddress =
@@ -67,7 +68,17 @@ export async function submit(
   if (!ready || !contractAddress)
     throw new Error(configurationError || "Contract deployment pending.");
   const client = walletClient(account, provider);
-  await client.connect("studionet");
+  await ensureStudionet(provider);
+  const accounts: unknown = await provider.request({ method: "eth_accounts" });
+  if (
+    !Array.isArray(accounts) ||
+    typeof accounts[0] !== "string" ||
+    accounts[0].toLowerCase() !== account.toLowerCase()
+  ) {
+    throw new Error(
+      "The selected wallet account changed. Reconnect before submitting.",
+    );
+  }
   const hash: unknown = await client.writeContract({
     address: contractAddress,
     functionName,

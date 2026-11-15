@@ -1,10 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-const client = vi.hoisted(() => ({ connect: vi.fn() }));
-vi.mock("@/lib/genlayer/client", () => ({
-  network: { id: 61999, name: "Studionet" },
-  walletClient: () => client,
-}));
 import { Providers, useWallet } from "@/components/providers";
 function WalletTest() {
   const wallet = useWallet();
@@ -41,7 +36,9 @@ describe("EIP-1193 wallet lifecycle", () => {
   it("connects and locally disconnects the selected account", async () => {
     window.ethereum = {
       request: vi.fn(async ({ method }: { method: string }) =>
-        method === "eth_requestAccounts" ? ["0x" + "1".repeat(40)] : "0xf22f",
+        method === "eth_requestAccounts" || method === "eth_accounts"
+          ? ["0x" + "1".repeat(40)]
+          : "0xf22f",
       ),
     } as unknown as NonNullable<Window["ethereum"]>;
     render(
@@ -55,14 +52,16 @@ describe("EIP-1193 wallet lifecycle", () => {
         "0x" + "1".repeat(40),
       ),
     );
-    expect(client.connect).toHaveBeenCalledWith("studionet");
+
     fireEvent.click(screen.getByText("Disconnect"));
     expect(screen.getByTestId("address")).toHaveTextContent("disconnected");
   });
   it("rejects a wallet that remains on the wrong chain", async () => {
     window.ethereum = {
       request: vi.fn(async ({ method }: { method: string }) =>
-        method === "eth_requestAccounts" ? ["0x" + "1".repeat(40)] : "0x1",
+        method === "eth_requestAccounts" || method === "eth_accounts"
+          ? ["0x" + "1".repeat(40)]
+          : "0x1",
       ),
     } as unknown as NonNullable<Window["ethereum"]>;
     render(
@@ -73,7 +72,7 @@ describe("EIP-1193 wallet lifecycle", () => {
     fireEvent.click(screen.getByText("Connect"));
     await waitFor(() =>
       expect(screen.getByRole("status")).toHaveTextContent(
-        "Switch to Studionet",
+        "Switch to Genlayer Studio Network",
       ),
     );
     expect(screen.getByTestId("address")).toHaveTextContent("disconnected");
@@ -91,6 +90,25 @@ describe("EIP-1193 wallet lifecycle", () => {
     await waitFor(() =>
       expect(screen.getByRole("status")).toHaveTextContent(
         "User rejected connection",
+      ),
+    );
+    expect(screen.getByTestId("address")).toHaveTextContent("disconnected");
+  });
+  it("shows an actionable plain-object wallet error in the UI", async () => {
+    window.ethereum = {
+      request: vi
+        .fn()
+        .mockRejectedValue({ code: -32002, message: "Already pending" }),
+    } as unknown as NonNullable<Window["ethereum"]>;
+    render(
+      <Providers>
+        <WalletTest />
+      </Providers>,
+    );
+    fireEvent.click(screen.getByText("Connect"));
+    await waitFor(() =>
+      expect(screen.getByRole("status")).toHaveTextContent(
+        "A wallet request is already open",
       ),
     );
     expect(screen.getByTestId("address")).toHaveTextContent("disconnected");

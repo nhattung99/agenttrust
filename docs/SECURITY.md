@@ -23,7 +23,7 @@ Public file access may be rate limited, unavailable in a validator's environment
 
 The comparison rule is NLP-based, not a mathematical proof that classifications match. The protocol chooses actual validators and consensus parameters. This application does not configure hosted validator models or claim a specific validator count. No validator consensus run was performed during Phase 1 because deployment is reserved for the owner.
 
-Studionet and wallet/Snap infrastructure are development dependencies; chain resets can erase deployment-scoped history. SDK `connect` invokes MetaMask Snap installation/connection prompts that the owner must inspect. The app's disconnect is local and does not revoke wallet permissions.
+Studionet and wallet infrastructure are development dependencies; chain resets can erase deployment-scoped history. The app uses EIP-1193 account/network requests with the official SDK chain preset and SDK-signed write transport, without calling the legacy helper that forces Snap setup. The owner approves wallet/network/signing prompts. Disconnect is local and does not revoke wallet permissions. Writes recheck that the account still matches the selected signer.
 
 Self-created tasks, coordinated clients, multiple profiles, uneven task difficulty, and selective dispute creation can bias reputation. Counts are transparent but not Sybil-resistant. A client can simply approve a bad result; that never creates verified PASS. Only disputed tasks receive AI adjudication. No task has escrow or an economic anti-spam requirement.
 

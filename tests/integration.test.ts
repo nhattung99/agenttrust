@@ -71,7 +71,11 @@ describe("contract integration", () => {
     const onHash = vi.fn();
     await c.submit(
       ("0x" + "3".repeat(40)) as `0x${string}`,
-      {} as WalletProvider,
+      {
+        request: vi.fn(async ({ method }: { method: string }) =>
+          method === "eth_chainId" ? "0xf22f" : ["0x" + "3".repeat(40)],
+        ),
+      } as unknown as WalletProvider,
       "accept_task",
       ["1"],
       onHash,
@@ -83,5 +87,24 @@ describe("contract integration", () => {
     expect(sdk.waitForTransactionReceipt).toHaveBeenCalledWith(
       expect.objectContaining({ status: TransactionStatus.FINALIZED }),
     );
+  });
+  it("does not submit when the selected wallet account changed", async () => {
+    vi.stubEnv("NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS", "0x" + "1".repeat(40));
+    const c = await import("@/lib/genlayer/client");
+    const provider = {
+      request: vi.fn(async ({ method }: { method: string }) =>
+        method === "eth_chainId" ? "0xf22f" : ["0x" + "4".repeat(40)],
+      ),
+    } as unknown as WalletProvider;
+    await expect(
+      c.submit(
+        ("0x" + "3".repeat(40)) as `0x${string}`,
+        provider,
+        "accept_task",
+        ["1"],
+        vi.fn(),
+      ),
+    ).rejects.toThrow("selected wallet account changed");
+    expect(sdk.writeContract).not.toHaveBeenCalled();
   });
 });

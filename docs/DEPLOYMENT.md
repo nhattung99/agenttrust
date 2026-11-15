@@ -54,7 +54,7 @@ NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS=YOUR_REAL_DEPLOYED_ADDRESS
 
 Replace the placeholder with the actual address; it is not a sample address. Restart `npm run dev`. For a production build, rerun `npm run build` after changing these variables because Next.js embeds public configuration at build time.
 
-Open the directory, task explorer, and profile and confirm that finalized records match Studio. Connect MetaMask, approve the official network/Snap prompts, and test writes from O and C. Check wallet rejection, account changes, network changes, and transaction failures. An SDK timeout after submission leaves the outcome unknown: recheck the same hash in the action panel or dashboard, rather than resubmitting.
+Open the directory, task explorer, and profile and confirm that finalized records match Studio. Connect MetaMask, approve account access and the official SDK-defined network prompts, and test writes from O and C. Check wallet rejection, account changes, network changes, and transaction failures. An SDK timeout after submission leaves the outcome unknown: recheck the same hash in the action panel or dashboard, rather than resubmitting.
 
 ## Required handoff
 

@@ -47,9 +47,13 @@ Only `studionet` is supported. Fill the address only after deploying the supplie
 
 ## Wallet guide
 
-Use desktop MetaMask with support for the official GenLayer wallet Snap. The installed `genlayer-js@1.1.8` `connect('studionet')` implementation switches/adds its SDK-defined chain and requests the official `npm:genlayer-wallet-plugin` Snap when missing. Review and approve those prompts in your wallet. A generic injected provider without Snap support may reject connection. The app never asks for a private key.
+Use the MetaMask extension in desktop Chrome, or an injected EIP-1193 wallet that supports the required account, network, and transaction methods. Unlock it before clicking Connect wallet. The app requests account access, switches to the official SDK's studionet preset, and verifies the selected account/network. A network is added only when the wallet reports it is unknown. No private keys or seed phrases are requested.
 
-Connect wallet shows the selected address and network. Account and chain changes clear cached reads; a wrong network disables writes. Disconnect ends this app's local session; it does not revoke MetaMask's site or Snap permissions. Submitted writes show their real hash while waiting for FINALIZED plus successful execution. Keep the hash before navigating away; the dashboard's transaction lookup can query it later. No browser storage is authoritative for tasks, submissions, or verdicts.
+The application no longer calls the SDK's legacy `connect()` helper: that helper unconditionally queries/installs MetaMask Snaps, while the installed SDK's write path uses the supplied EIP-1193 provider and `eth_sendTransaction`. No Snap installation is forced. Actual transaction signing still requires owner confirmation and remains to be verified with a real wallet.
+
+Wallet errors show the stage, provider message, and error code, including plain-object errors. If a request is already pending, open the wallet extension and finish or cancel it before retrying. Repeated Connect clicks do not start concurrent requests. Account/network prompts are not successful until the account and chain are re-read and validated.
+
+Account and chain changes clear cached reads. Disconnect ends the local session and removes its provider listeners; it does not revoke wallet permissions. Every write rechecks the network and selected account before the official SDK submits it. Submitted writes show their actual hash while waiting for finalized successful execution. No browser storage is authoritative for tasks, submissions, or verdicts.
 
 ## Supported work
 

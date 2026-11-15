@@ -44,3 +44,11 @@ Some newest documentation examples use v2-era helpers (`isSuccessful`, `waitForF
 `node scripts/check-studio.mjs` returned a real public-method schema from hosted stable Studio after explicit owner approval to transmit the source. `studio-schema.json` contains that response. `studio-validation.json` records the checked source hash and SDK/network. The constructor has no parameters. This is a read-only code/schema request, not a deployment or transaction.
 
 Host HTTP retrieval of the exact pinned demo source returned HTTP 200 and 10,142 bytes. See `demo/source-check.json`. Access from GenVM validators, prompt behavior, committee configuration, signing, and live finality have not been exercised without the owner's manual deployment. Those checks are in `DEPLOYMENT.md`; no unsupported feature is silently replaced with an off-chain judge.
+
+## Wallet connection patch (15 November 2026)
+
+The installed SDK's `connect` helper queries `wallet_getSnaps` and may request installation even though `_sendTransaction` uses the provided wallet's `eth_sendTransaction` method. The app now handles account/network setup via EIP-1193, EIP-3326, and EIP-3085 with parameters taken only from the SDK studionet preset. It still uses the official `createClient`, contract methods, signing transport, and finality handling. The old wallet table above records the initial implementation, not the patched flow.
+
+Plain-object provider failures previously became a generic Wallet connection failed message because they were not Error instances. The patch preserves actionable RPC codes and stage-specific errors and does not claim a real connection was tested.
+
+Primary standards: https://eips.ethereum.org/EIPS/eip-1193, https://eips.ethereum.org/EIPS/eip-3326, https://eips.ethereum.org/EIPS/eip-3085. Installed source: `node_modules/genlayer-js/dist/index.js`, connect helper, `_sendTransaction`, and `getCustomTransportConfig`.
